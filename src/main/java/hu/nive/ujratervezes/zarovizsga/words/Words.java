@@ -7,11 +7,7 @@ public class Words {
         int numbCounter = 0;
         for (int i = 0; i < s.length(); i++) {
             boolean temp = true;
-            try {
-                Integer.parseInt(s.substring(i, i+1));
-            } catch (NumberFormatException e) {
-                temp = false;
-            }
+            temp = isNumber(s, i, temp);
             if (temp == false) {
                 charCounter++;
             } else {
@@ -19,5 +15,14 @@ public class Words {
             }
         }
         return numbCounter > charCounter;
+    }
+
+    private boolean isNumber(String s, int i, boolean temp) {
+        try {
+            Integer.parseInt(s.substring(i, i +1));
+        } catch (NumberFormatException e) {
+            temp = false;
+        }
+        return temp;
     }
 }
